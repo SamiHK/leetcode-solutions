@@ -1,17 +1,23 @@
-const islandCount = (grid) =>{
-    let islands = 0;
+const minimalIsland = (grid) =>{
+
+    // let islandSize = Number.MAX_SAFE_INTEGER;
+    // OR 
+    let islandSize = Infinity;
     if(grid.length > 0 && grid[0].length > 0){
     
         const visited = new Set();
+        
         for (let r = 0; r < grid.length; r++) {
             for (let c = 0; c < grid[0].length; c++) {
-                if(explore(grid, r, c, visited) === true){
-                    islands +=1;
+                let size = explore(grid, r, c, visited);
+                if(size < islandSize && size > 0)
+                {
+                    islandSize = size;
                 }
             }
         }
 
-        return islands;
+        return islandSize === Infinity ? -1: islandSize;
 
     } else {
         return -1;
@@ -31,22 +37,22 @@ const explore = (grid, r, c, visited) => {
     //check inbounds
     const rowInBounds = 0 <= r && r < grid.length;
     const colInBounds = 0 <= c && c < grid.length;
+    if(!rowInBounds || !colInBounds) return 0;
 
-    if(!rowInBounds || !colInBounds) return false;
-
-    if(grid[r][c] === 'W') return false;
+    if(grid[r][c] === 'W') return 0;
 
 
     const pos = r + ',' + c;
-    if(visited.has(pos)) return false;
+    if(visited.has(pos)) return 0;
     visited.add(pos); // cycle prevention logic
 
-    explore(grid, r-1, c, visited); // going up
-    explore(grid, r+1, c, visited); // going down
-    explore(grid, r, c-1, visited); // going left
-    explore(grid, r, c+1, visited); // going right
+    let size = 1;
+    size += explore(grid, r-1, c, visited); // going up
+    size += explore(grid, r+1, c, visited); // going down
+    size += explore(grid, r, c-1, visited); // going left
+    size += explore(grid, r, c+1, visited); // going right
 
-    return true;
+    return size;
 };
 
 const grid = [
@@ -67,8 +73,8 @@ const grid = [
 // console.log(s.has('1,3'));
 
 // Island is vertically or horizontally connected region / segment
-console.log("Islands:", islandCount(grid)); // -> 3
-console.log("Islands:", islandCount([['W','W','W','W','W','W']])); // -> -1
+console.log("Islands:", minimalIsland(grid)); // -> 3
+console.log("Islands:", minimalIsland([['W','W','W','W','W','W']])); // -> -1
 
 
 // complexity
