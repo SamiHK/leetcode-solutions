@@ -1,0 +1,4 @@
+{
+    "markdownlint.lintWorkspaceGlobs": [],
+    "markdownlint.run": "onSave"
+}
