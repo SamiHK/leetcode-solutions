@@ -67,12 +67,12 @@ b.left  = d;
 b.right = e;
 c.right = f;
 
-console.log("Traversal BFT Queue:", breadthFirstFind(a, 'e'));
-console.log("Traversal DFT Stack:", depthFirstFind(a,'e'));
-console.log("Traversal DFT Stack Recursive:", depthFirstRecursiveFind(a,'e'));
+console.log("Find BFT Queue:", breadthFirstFind(a, 'e'));
+console.log("Find DFT Stack:", depthFirstFind(a,'e'));
+console.log("Find DFT Stack Recursive:", depthFirstRecursiveFind(a,'e'));
 
-console.log("Traversal BFT Queue:", breadthFirstFind(a, 'z'));
-console.log("Traversal DFT Stack:", depthFirstFind(a,'z'));
+console.log("Find BFT Queue:", breadthFirstFind(a, 'z'));
+console.log("Find DFT Stack:", depthFirstFind(a,'z'));
 
 //       A
 //      / \
