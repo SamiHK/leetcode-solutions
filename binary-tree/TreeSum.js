@@ -79,4 +79,4 @@ console.log("Sum DFT Stack Recursive:", depthFirstRecursiveSum(a));
 //   B(10) C(11)
 //    /\    \
 // D(1) E(7) F(2)
-// sum = 9+10+11+1+7+2 = 40
+// sum = 9+10+11+1+7+2 = 41

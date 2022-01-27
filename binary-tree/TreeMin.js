@@ -73,8 +73,9 @@ console.log("FindMin BFT Queue:", breadthFirstFindMin(a));
 console.log("FindMin DFT Stack:", depthFirstFindMin(a));
 console.log("FindMin DFT Stack Recursive:", depthFirstRecursiveFindMin(a));
 
-//       A
+//      A(9)
 //      / \
-//     B   C
+//   B(10) C(11)
 //    /\    \
-//   D  E    F
+// D(1) E(7) F(2)
+// sum = 9+10+11+1+7+2 = 41
