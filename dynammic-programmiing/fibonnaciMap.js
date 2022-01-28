@@ -1,6 +1,9 @@
+const state =  new Map();
 const fib = (n) =>{
     if(n <= 2) return 1;
-    return (fib(n-1) + fib(n-2));
+    if(state.has(n)) return state.get(n);
+    state.set(n, (fib(n-1) + fib(n-2)));
+    return state.get(n);
 };
 
 
@@ -18,7 +21,9 @@ console.log("Bottleneck testing")
 console.log(fib(25));
 console.log(fib(40));
 console.log(fib(45));
-console.log(fib(50)); // -> this is going to kill cpu
+console.log(fib(50)); // -> this is going to not kill in Sami's Algo
 
-// Time = O(2^n) 
-// Space = O(n); (since in each case function is pushed in stack)
+// Time = O(n)
+// Space = O(n);
+
+
