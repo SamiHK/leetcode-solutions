@@ -18,9 +18,6 @@ const canSum = (targetSum, numbers) =>  {
     
     for (let num of numbers) {
         const remainder = targetSum - num;
-        if(remainder === 0) {
-            return true;
-        }
         if(canSum(remainder, numbers) === true) {
             return true;
         }
@@ -46,29 +43,24 @@ const canSum = (targetSum, numbers) =>  {
 
 
 // we can have overlappting sub-problems while doing recursive calls and we can me use of them to reduce the Runtime.
-const canSumMemoize = (targetSum, numbers, memo = new Map()) =>  {
+const canSumMemoize = (targetSum, numbers, memo = {}) =>  {
     
-    if(memo.has(targetSum)) return memo.get(targetSum);
+    if(targetSum in memo) return memo[targetSum];
 
-    if(targetSum === 0) {
-        memo.set(targetSum, true); // track return 
-        return true;
-    }
+    if(targetSum === 0) return true;
 
-    if(targetSum < 0){
-        memo.set(targetSum, falses); // track return 
-        return true;
-    }
+    if(targetSum < 0) return false;
+    
     
     for (let num of numbers) {
         const remainder = targetSum - num;
-        if(canSum(remainder, numbers, memo) === true) {
-            memo.set(targetSum, true); // track return
+        if(canSumMemoize(remainder, numbers, memo) === true) {
+            memo[targetSum] = true; // track return
             return true;
         }
     }
 
-    memo.set(targetSum, false); // track return 
+    memo[targetSum] = false; // track return 
     return false;
 };
 
