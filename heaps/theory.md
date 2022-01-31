@@ -63,7 +63,7 @@ Covering the following topics will help building logics using Heap as a Data Str
     * COMPLETE BINARY TREE
     - A full binary tree is also a complete binary tree
     - If the array representation of binary tree have missing elements then it is not a complete binary tree.
-    - If the array representation ob binary tree does not have missing elements then it is a complete binary tree.
+    - If the array representation of binary tree does not have missing elements then it is a complete binary tree.
     - A complete binary tree can have above levels with no childs, provided that array representation is continuous
     - A complete binary tree is a Full-Binary Tree with height upto (h-1), on last level the elements are filled from left-to-right.
     - the height of complete binary tree will be *log(n)*
