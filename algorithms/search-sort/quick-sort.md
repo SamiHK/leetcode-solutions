@@ -1,4 +1,4 @@
-## Merge Sort
+## Quick Sort
 Quick Sort is a Divide and Conquer Algorithm, it uses this strategy. It means it will split the problem into sub-problems and solve those problems.
 
 
@@ -149,23 +149,54 @@ Quick Sort is a Divide and Conquer Algorithm, it uses this strategy. It means it
     Note: high (h) is added as infinity in the first recursion to be the largest value in strings it can be '\0'.  In next recursions high (h) will be the point/index where the PIVOT will be ORDERED.
 
 
+    ANOTHER OR ONE WAY APPROACH copied from GeeksForGeeks
+
+
+    /* This function takes last element as pivot, places
+    the pivot element at its correct position in sorted
+    array, and places all smaller (smaller than pivot)
+    to left of pivot and all greater elements to right
+    of pivot */
+
+    partition (arr[], low, high)
+    {
+        // pivot (Element to be placed at right position)
+        pivot = arr[high];  
+    
+        i = (low - 1)  // Index of smaller element and indicates the 
+                    // right position of pivot found so far
+
+        for (j = low; j <= high- 1; j++)
+        {
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot)
+            {
+                i++;    // increment index of smaller element
+                swap arr[i] and arr[j]
+            }
+        }
+        swap arr[i + 1] and arr[high])
+        return (i + 1)
+    }
+
+
 ----------------------------------------------------------------------------------------
 
 ## Quick Sort Algotithm
 
 
-    Algorithm QuickSort(A, low, high){ // A is list
+    /* low  --> Starting index,  high  --> Ending index */
+    quickSort(arr[], low, high)
+    {
+        if (low < high)
+        {
+            /* pi is partitioning index, arr[pi] is now
+            at right place */
+            pi = partition(arr, low, high);
 
-        if(low < high) {
-
-            j = Partition(low, high);
-            // the sorted element (j) will act as an Infinity OR Maximum value for next recursions.
- 
-            QuickSort(low, j);
-            QuickSort(j+1, high);
+            quickSort(arr, low, pi - 1);  // Before pi
+            quickSort(arr, pi + 1, high); // After pi
         }
-
-        return A;
     }
 
 ----------------------------------------------------------------------------------------
