@@ -5,12 +5,11 @@ const partition = (arr, low, high) => {
     // pivot
     let pivot = arr[high];
  
-    // Index of smaller element and
-    // indicates the right position
-    // of pivot found so far
+    // Indicates the right position of pivot found so far
+    // Index of smaller element i.e. already sorted element.
     let i = (low - 1);
  
-    for (let j = low; j <= high - 1; j++) {
+    for (let j = low; j < high; j++) {
  
         // If current element is smaller
         // than the pivot
@@ -23,7 +22,7 @@ const partition = (arr, low, high) => {
         }
     }
     
-    let k = i+1;
+    let k = i+1; // indicated the position of newly sorted element
     [arr[k], arr[high]] = [arr[high], arr[k]];
    
     return k;
@@ -40,7 +39,7 @@ const quickSort = (arr, low, high) => {
 };
 
 
-let arr1 = [1,6,11,5,22,3,8,23,9,2,7];
+let arr1 = ['a','c','b','z','q','p'];
 quickSort(arr1, 0, (arr1.length-1));
 console.log("list : ", arr1);
 
