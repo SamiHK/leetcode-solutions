@@ -189,3 +189,24 @@ It is a Recursive Algorithm
 
     Time = O(n * log(n));
     Space = O(n);
+
+
+
+
+## Merge Sort Single Linked List
+
+Is often preferred for sorting a linked list. The slow random-access performance of a linked list makes some other algorithms (such as quicksort) perform poorly, and others (such as heapsort) completely impossible.
+
+https://www.geeksforgeeks.org/merge-sort-for-linked-list/
+
+    MergeSort(head)
+    1) If the head is NULL or there is only one element in the Linked List 
+        then return.
+    2) Else divide the linked list into two halves.  
+          FrontBackSplit(head, &a, &b); /* a and b are two halves */
+    3) Sort the two halves a and b.
+          MergeSort(a);
+          MergeSort(b);
+    4) Merge the sorted a and b (using SortedMerge()) 
+       and update the head pointer.
+         head = SortedMerge(a, b);
