@@ -52,39 +52,58 @@ const getMiddle = (head) => {
 };
 
 const sortedMerge = (a, b) =>{
-    var result = null;
+    // var result = null;
     /* Base cases */
-    if (a == null)
-        return b;
-    if (b == null)
-        return a;
+    // if (a == null)
+    //     return b;
+    // if (b == null)
+    //     return a;
 
     /* Pick either a or b, and recur */
-    if (a.val <= b.val) {
-        result = a;
-        result.next = sortedMerge(a.next, b);
-    } else {
-        result = b;
-        result.next = sortedMerge(a, b.next);
+    // if (a.val <= b.val) {
+    //     result = a;
+    //     result.next = sortedMerge(a.next, b);
+    // } else {
+    //     result = b;
+    //     result.next = sortedMerge(a, b.next);
+    // }
+    // return result;
+    //TODO: Apply while condition -> avoid recursion
+    let dummy = new Node(); // preserviing result head node
+    let tail =  dummy;
+
+    while(a !== null && b !== null){
+        if (a.val < b.val) {
+            tail.next = a;
+            a = a.next;
+        } else {
+            tail.next = b;
+            b = b.next;
+        }
+        tail = tail.next;
     }
 
-    //TODO: Apply while condition -> avoid recursion
-    
-    return result;
+    if(a){
+        tail.next = a;
+    }
+
+    if(b){
+        tail.next = b;
+    }
+
+    return dummy.next;
 };
 
 
 // misc stuff
 var head = null;
-const push = (new_data) => {
+const push = (data) => {
     /* allocate node */
-    var new_node = new Node(new_data);
-
+    var newNode = new Node(data);
     /* link the old list off the new node */
-    new_node.next = head;
-
+    newNode.next = head;
     /* move the head to point to the new node */
-    head = new_node;
+    head = newNode;
 };
 
 // Utility function to print the linked list
