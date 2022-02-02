@@ -43,12 +43,13 @@ const mergeArray = (arr, left, mid, right) => {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
+            k++;
         }
         else {
             arr[k] = R[j];
             j++;
+            k++;
         }
-        k++;
     }
   
     // Copy the remaining elements of

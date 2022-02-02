@@ -32,7 +32,7 @@ const quickSort = (arr, low, high) => {
 
     if(low < high) {
         //getting new partition position
-        let pi = partition(arr, low, high);
+        let pi = partition(arr, low, high); // pivot is already in sorted position
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
