@@ -43,5 +43,4 @@ c.next = d;
 
 
 console.log(linkedListValues(a));
-
 console.log(linkedListValuesRecusive(a));

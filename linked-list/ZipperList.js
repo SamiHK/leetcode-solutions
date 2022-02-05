@@ -35,6 +35,7 @@ const zipperList = (head1, head2) => {
 
 
 const zipperListRecursive = (head1, head2) => {
+    
     if(head1 === null && head2 === null) return null;
 
     if(head1 === null) return head2;

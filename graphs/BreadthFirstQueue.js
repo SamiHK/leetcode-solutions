@@ -1,5 +1,3 @@
-const { tmpdir } = require("os");
-
 const breadthFirstStackPrint = (graph, source) => {
     const queue = [source];
 
