@@ -88,6 +88,7 @@ const heapify = (arr, n, i) => {
         heapify (arr, n, largest);
     }
 
+    // optional
     return arr;
 };
 
@@ -129,15 +130,53 @@ const heapSort = (arr) => {
         heapify(arr, i, 0);
     }
 
-    return arr;
+};
+
+
+// Note Insertion can mis-arrange the sort order.
+const heapInsert = (arr, n, key) =>{
+
+    // Increase the size of Heap by 1
+    n = n + 1;
+ 
+    // Insert the element at end of Heap
+    arr[n - 1] = key;
+ 
+    // Heapify the new node following a
+    // Bottom-up approach
+    heapify(arr, n, n - 1);
+};
+
+// Note: deletion always happens at the root-node, root is replaced with last node
+// Note: deleting complete min-heap gives array in ascending order sorting
+// Note: delting complete max-heap gives array in descending order sorting
+const heapDelete = (arr, n) => {
+
+    // optional to keep the last root node in array - if you keep doing deletion until heap is deleted and keep storing elements
+    // at the very next node after heap boundary, elements becomes sorted
+    let tmp = arr[0];  // (optional)
+
+    // Get the last element
+    let lastElement = arr[n - 1];    arr[n-1] = tmp; // -< optional to replace
+   
+    // Replace root with first element
+    arr[0] = lastElement;
+
+    // Decrease size of heap by 1
+    n = n - 1;
+
+    // heapify the root node
+    heapify(arr, n, 0);
+
+    // return new size of Heap
+    return n;
 };
 
 var arr = [5, 12, 11, 13, 4, 6, 7 ];
 
+// heapify - heap sort
 console.log("Heapify - max heap", heapify(arr, arr.length, 0));
-console.log("Heap Sort - using heapify", heapSort(arr));
+console.log("Heap Sort - using heapify", heapSort(arr), arr);
 
-// console.log("Heap Insertion - max heap", heapSort(arr));
-// console.log("Heap Deletion - max heap", heapSort(arr));
-
-
+console.log("Heap Insertion - max heap", heapInsert(arr, arr.length, 20), arr);
+console.log("Heap Deletion - max heap", heapDelete(arr, arr.length), arr);
