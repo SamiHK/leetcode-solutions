@@ -431,7 +431,7 @@ There are two types of Heap:
        2|   12   40  25   18
 
        array = [10,20,15,12,40,25,18]
-              1 ,2 , 3, 4, 5, 6, 7
+                1 ,2 , 3, 4, 5, 6, 7
 
 
        Lets HEAPIFY.

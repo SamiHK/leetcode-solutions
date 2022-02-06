@@ -80,9 +80,8 @@ const heapify = (arr, n, i) => {
 
     // if largest is not a root
     if(largest !== i){
-        let tmp = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = tmp;
+        // swap root and largest values
+        [arr[i], arr[largest]] = [arr[largest], arr[i]];
 
         // Recursively heapify the affected sub-tree
         heapify (arr, n, largest);
