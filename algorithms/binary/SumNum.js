@@ -28,14 +28,14 @@
     //a^b= 0       0000  ------------------->>> Notice that when (a^b) is zero we get the sum as (a&b<<1)
     //a&b<<1=8     0100 <<1 = 1000
 
- while (b !== 0){
-    let carry = (a & b) << 1;
-     
-    a = a ^ b; // result
-    b = carry; // if their is carry -> then carry-on
-}
+   while (b !== 0){
+      let carry = (a & b) << 1;
+      
+      a = a ^ b; // result
+      b = carry; // if their is carry -> then carry-on
+   }
 
-return a;
+   return a;
 };
 
 

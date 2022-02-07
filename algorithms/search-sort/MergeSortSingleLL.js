@@ -52,22 +52,6 @@ const getMiddle = (head) => {
 };
 
 const sortedMerge = (a, b) =>{
-    // var result = null;
-    /* Base cases */
-    // if (a == null)
-    //     return b;
-    // if (b == null)
-    //     return a;
-
-    /* Pick either a or b, and recur */
-    // if (a.val <= b.val) {
-    //     result = a;
-    //     result.next = sortedMerge(a.next, b);
-    // } else {
-    //     result = b;
-    //     result.next = sortedMerge(a, b.next);
-    // }
-    // return result;
     //TODO: Apply while condition -> avoid recursion
     let dummy = new Node(); // preserviing result head node
     let tail =  dummy;

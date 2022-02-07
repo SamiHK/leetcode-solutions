@@ -41,29 +41,7 @@ const splitDLL = (head) => {
 
 
 const mergeDLL = (left, right) => {
-    //Recursive
-    // // If left linked list is empty
-    // if (left == null) {
-    //     return right;
-    // }
 
-    // // If right linked list is empty
-    // if (right == null) {
-    //     return left;
-    // }
-
-    // // Pick the smaller value
-    // if (left.data < right.data) {
-    //     left.next = merge(left.next, right);
-    //     left.next.prev = left;
-    //     left.prev = null;
-    //     return left;
-    // } else {
-    //     right.next = merge(left, right.next);
-    //     right.next.prev = right;
-    //     right.prev = null;
-    //     return right;
-    // }
     let result = new Node();
     let tail =  result;
 

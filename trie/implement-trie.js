@@ -66,6 +66,7 @@ Trie.prototype.startsWith = function(prefix) {
     for(const c of prefix){
         // if character is not found return false
         if(!(c in curr.children)){
+            // we will not insert only check
             return false;
         }
         // only check if children exist and not the word
