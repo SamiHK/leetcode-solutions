@@ -53,6 +53,9 @@
         length =  targetSum + 1 
 
         [2,2] can generate [4] but it is not shortest way, ignoring cases like this  
+        [2,3] can generate [5] but it is not shortest way, ignoring cases like this 
+        [2,4] can generate [6] since there are not elements before, it is the shortest way
+        [2,5] can generate [7] since there are not elements before, it is the shortest way 
 
     
         CASE ## 4, n=3
@@ -83,17 +86,26 @@ const bestSumTab = (targetSum, numbers) =>{
     const table = Array(targetSum +1).fill(null);
     table[0] = [];
 
+    // checking (n) times
     for (let i = 0; i <= targetSum; i++) {
+        // if index is not null -> other cases are possible
         if(table[i] !== null){
+            
+            // checking other combinations (m) 
             for (const num of numbers) {
-                const combination = [...table[i], num];
+
+                // creating combination
+                const combination = [...table[i], num];  // copying (m)
+
+                // checking if combination is shorter -> yes the replace
                 if( !table[i+num] || table[i+num].length > combination.length ){
                     table[i+num] = combination;
                 }
             }
+
         }        
     }
-
+    if(!table[amount]) return -1;
     return table[targetSum];
 };
 
