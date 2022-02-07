@@ -5,35 +5,6 @@ The function should return a boolean indicating whether or not there exist a dir
 */
 
 const hasPath = (graph, src, dst) => {
-    /**
-    //Recursive -- DFS
-    if(src === dst) return true;
-    for(let neighbour of graph[src]){
-        if(hasPath(graph, neighbour, dst))
-        return true;
-    }
-    return false;
-    **/
-
-     /**
-    //Iterative -- DFS
-    if(src === dst) return true;
-    
-    const stack = [src];
-    while(stack.length > 0) {
-        const current = stack.pop();
-
-        for(let neighbour of graph[current]){
-            if(neighbour === dst) return true;
-            else stack.push(neighbour);
-        }
-
-    }
-    return false;
-    **/
-
-    /**
-    // Recursive - BFS  */
 
     if(src === dst) return true;
 

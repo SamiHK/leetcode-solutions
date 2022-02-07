@@ -5,8 +5,6 @@ const connectedComponentsCount = (graph) => {
     const visited = new Set(); 
     // Make sure to add keys as string as Set can create a key of 0 as integer / String / both that can effect results.
     let countSegments = 0;
-    
-
     for (const node in graph) {
         if(explore(graph, node, visited) === true){
             countSegments += 1;
@@ -20,7 +18,6 @@ const connectedComponentsCount = (graph) => {
 const explore = (graph, node, visited) =>{
 
     if(visited.has(String(node))) return false; // Important to set Key as String to avoid number key duplicates
-
     visited.add(String(node)); // Important to set Key as String to avoid number key duplicates
 
     console.log(visited);
