@@ -12,22 +12,40 @@ const undirectedPath = (edges, src, dst) => {
 
 const hasPath = (graph, src, dst, visited) => {
 
+    // base case for recursion
     if(src === dst) return true;
-    
-    if(visited.has(src)) return false; // if edge is visited we must have travelled from it and no need to visit now
-    visited.add(src);
 
-    // source and neighbour are connected by direct edge..... 
-    // so, if source is connected to neighbour and if neighbour connects with destination then here,
-    // source will definately connects with the destination and we found a conenctrion path.
-    for (let neighbour of graph[src]) {
-        if(hasPath(graph, neighbour, dst, visited) === true){
+    // if already visited return false
+    if(visited.has(String(src))) return false;
+    //add to visited
+    visited.add(String(src));
+
+    // Recursive DFS
+    for(let neighbor of graph[src]){
+
+        if(hasPath(graph, neighbor, dst, visited)=== true ){
             return true;
-        }
+        } 
     }
-    // if we get RangeError: Maximum call stack size exceeded then we missed the cyclic cases
 
     return false;
+
+    // if(src === dst) return true;
+    
+    // if(visited.has(src)) return false; // if edge is visited we must have travelled from it and no need to visit now
+    // visited.add(src);
+
+    // // source and neighbour are connected by direct edge..... 
+    // // so, if source is connected to neighbour and if neighbour connects with destination then here,
+    // // source will definately connects with the destination and we found a conenctrion path.
+    // for (let neighbour of graph[src]) {
+    //     if(hasPath(graph, neighbour, dst, visited) === true){
+    //         return true;
+    //     }
+    // }
+    // // if we get RangeError: Maximum call stack size exceeded then we missed the cyclic cases
+
+    // return false;
 };
 
 

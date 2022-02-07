@@ -1,3 +1,5 @@
+const { sample } = require("lodash");
+
 class Node{
     constructor(val) {
         this.val = val;
@@ -11,25 +13,33 @@ const depthFirstTraversalRecursive = (root) => {
     
     if(!root) return [];
 
-    const leftValues =  depthFirstTraversalRecursive(root.left); //b,d,e
-    const rightValues =  depthFirstTraversalRecursive(root.right);// c,f
+    let leftValues = depthFirstTraversalRecursive(root.left);
+    let rightValues = depthFirstTraversalRecursive(root.right);
 
-    return [root.val, ...leftValues, ...rightValues];
+    return [...root.val, ...leftValues, ...rightValues]
 };
 
 const depthFirstTraversal  = (root) => {
 
     if(!root) return [];
-    const traversals = [];
-    const stack = [root];
-    
+
+    let traversals = [];
+
+    let stack = [root];
+
     while(stack.length > 0){
+
         const current = stack.pop();
+
         traversals.push(current.val);
+
+        if(current.left) stack.push(current.left);
         if(current.right) stack.push(current.right);
-        if(current.left) stack.push(current.left); // if you push left first then it would be on top of next iteration, vice versa
+
     }
+
     return traversals;
+    
 };
 
 

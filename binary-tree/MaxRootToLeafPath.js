@@ -1,5 +1,3 @@
-const { max } = require("lodash");
-
 class Node{
     constructor(val) {
         this.val = val;
@@ -11,11 +9,9 @@ class Node{
 // for path finders ITERATIVE will not be optimal solutions as the need to maintain branches' state will cost lots of space
 // for path finding APPROACH will be the preferred way
 const depthFirstRecursiveMaxRootToLeafPath = (root) => {
-    
-    if(root === null) return -Infinity;
-    if(root.left === null && root.right === null) return root.val;
-    
-    return root.val + Math.max(depthFirstRecursiveMaxRootToLeafPath(root.left), depthFirstRecursiveMaxRootToLeafPath(root.right));
+
+    if(root === null) return 0;
+    return Math.max(root.val + depthFirstRecursiveMaxRootToLeafPath(root.left) + depthFirstRecursiveMaxRootToLeafPath(root.right));
 };
 
 

@@ -1,11 +1,13 @@
 const shortestPath = (edges, src, dst) => {
 
+
     const graph = buildGraph(edges);
     console.log(graph);
 
-    const visited = new Set([src]);
-    const queue = [[src, 0]];
 
+    const visited = new Set([src]); // adding complete [] of arrays in visited
+    // point to note here is that in the queue we are maintaining the src and the count of its occurence
+    const queue = [[src, 0]];
     while(queue.length > 0){
 
         const[node, distance] = queue.shift();
@@ -22,6 +24,8 @@ const shortestPath = (edges, src, dst) => {
 };
 
 
+
+
 const buildGraph = (edges) => {
     
     const graph = {};
@@ -36,7 +40,6 @@ const buildGraph = (edges) => {
 
     return graph;
 }
-
 
 
 const edges = [

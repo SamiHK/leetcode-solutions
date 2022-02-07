@@ -8,8 +8,8 @@ const largestComponent = (graph) => {
     
 
     for (const node in graph) {
-        const size = exploreSize(graph, node, visited);
 
+        const size = exploreSize(graph, node, visited);
         if(size > longest) longest = size;
          
     }

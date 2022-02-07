@@ -7,15 +7,18 @@ The function should return a boolean indicating whether or not there exist a dir
 const hasPath = (graph, src, dst) => {
 
     if(src === dst) return true;
-
     const queue = [src];
+
     while(queue.length > 0){
-        const current = queue.shift();
+
+        let current = queue.shift();
         for(let neighbour of graph[current]){
+
             if(neighbour === dst) return true;
             else queue.push(neighbour);
         }
     }
+
     return false;
 };
 
@@ -29,6 +32,7 @@ const graph = {
     k:[]
 };
 
+// O(V + E)
 
 if(hasPath(graph, 'f', 'k')) console.log("FOUND\n");
 else console.log("NOT FOUND\n");

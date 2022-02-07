@@ -1,26 +1,31 @@
 class Node{
-    constructor(val) {
+    constructor(val){
         this.val = val;
         this.left = null;
         this.right = null;
     }
-}   
+}
 
-const  breadthFirstTraversal = (root) => {
-    if(root === null) return [];
+const breadthFirstTraversal = (root) => {
 
-    const values = [];
+    if(!root) return [];
+    
+    let traversals = [];
+
     const queue = [root];
+    
+    while(queue.length > 0) {
 
-    while(queue.length > 0){
-        const current = queue.shift();
-        values.push(current.val);
+        let current = queue.shift();
 
-        if(current.left !== null) queue.push(current.left); 
-        if(current.right !== null) queue.push(current.right); 
+        traversals.push(current.val);
+
+        if(current.left) queue.push(current.left);
+        if(current.right) queue.push(current.right);
+
     }
 
-    return values;
+    return traversals;
 };
 
 

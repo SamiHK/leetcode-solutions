@@ -3,8 +3,11 @@ const islandCount = (grid) =>{
     if(grid.length > 0 && grid[0].length > 0){
     
         const visited = new Set();
+
         for (let r = 0; r < grid.length; r++) {
+
             for (let c = 0; c < grid[0].length; c++) {
+
                 if(explore(grid, r, c, visited) === true){
                     islands +=1;
                 }
@@ -28,6 +31,7 @@ const islandCount = (grid) =>{
 // pos = '12,4'
 // gotcha = if you remove comma from key chances of collision are high i.e '1,24' and '12,4' will become same '124'
 const explore = (grid, r, c, visited) => {
+    
     //check inbounds
     const rowInBounds = 0 <= r && r < grid.length;
     const colInBounds = 0 <= c && c < grid.length;

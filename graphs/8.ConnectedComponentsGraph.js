@@ -3,14 +3,16 @@
 const connectedComponentsCount = (graph) => {
 
     const visited = new Set(); 
-    // Make sure to add keys as string as Set can create a key of 0 as integer / String / both that can effect results.
-    let countSegments = 0;
-    for (const node in graph) {
-        if(explore(graph, node, visited) === true){
-            countSegments += 1;
-        } 
-    }
     
+    let countSegments = 0;
+
+    for(let neighbor in graph){
+
+        if(explore(graph, neighbor, visited) === true){
+            countSegments +=1;
+        }
+    }
+
     return countSegments;
 };
 
@@ -23,6 +25,7 @@ const explore = (graph, node, visited) =>{
     console.log(visited);
 
     for (const neighbour of graph[node]) {
+        // recursive
         explore(graph, neighbour, visited);
     }
 

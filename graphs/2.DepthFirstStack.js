@@ -1,22 +1,30 @@
 
 const depthFirstStackPrint = (graph, source) => {
+    
+    // Stack -> LIFO
+    // LI -> .push() entry at end
+    // FO -> .pop() exit at end
+    // vertical
     const stack = [source];
 
     while(stack.length > 0){
-        const current = stack.pop();
+
+        let current = stack.pop();
         console.log(current);
 
-        for(let neighbour of graph[current]){
-            stack.push(neighbour);
+        for(let neighbors of graph[current]){
+            stack.push(neighbors);
         }
     }
 };
 
 
 const depthFirstRecursivePrint = (graph, source) => {
+    
     console.log(source);
     for(let neighbour of graph[source]){
-        depthFirstRecursivePrint(graph, neighbour);
+        // find using neighbours
+        depthFirstRecursivePrint(graph, neighbour)
     }
 };
 // a ->c
@@ -34,7 +42,7 @@ const graphDF = {
     e:[],
     f:[]
 };
-
+// O(V + E)
 console.log("Stack program begins\n");
 
 depthFirstStackPrint(graphDF, 'a');
