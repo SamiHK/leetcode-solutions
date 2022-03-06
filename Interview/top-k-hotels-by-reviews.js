@@ -133,8 +133,10 @@ const awardTopKHotels = (positiveKeywords, negativeKeywords, hotelIds, reviews, 
     // create array of hotel map values-entries and sort them in reverse/descending order
     res = [...hotelMap.entries()].sort((a,b) => b[1] - a[1]);
     console.log(res);
-    // transforming key-value 
+
+    // transforming key-value based tuple array into arrays of keys
     res = res.map(([a,b]) => a)
+    
     console.log(res);
     return res.slice(0, k);
 };
