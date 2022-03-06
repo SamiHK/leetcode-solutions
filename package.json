@@ -2,5 +2,8 @@
   "devDependencies": {
     "@types/node": "^17.0.10",
     "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "datastructures-js": "^10.2.0"
   }
 }
