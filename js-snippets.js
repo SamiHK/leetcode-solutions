@@ -55,3 +55,12 @@ console.log(mapSort3);
 const mapSort4 = new Map([...myMap.entries()].reverse());
 console.log(mapSort4);
 // Map(4) {"d" => 2, "b" => 1, "c" => 4, "a" => 3}
+
+
+// Hack: // hack: if you append "" after and array the result will have array values concatenated together as string.
+console.log("\n\n Array to String hack");
+const arr = new Array(26).fill(0);
+arr[0]=1;
+arr[25]=1;
+const hashT = arr + "";
+console.log(arr,"\n\n",hashT, "\n\n");
