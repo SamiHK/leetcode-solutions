@@ -64,3 +64,16 @@ arr[0]=1;
 arr[25]=1;
 const hashT = arr + "";
 console.log(arr,"\n\n",hashT, "\n\n");
+
+
+let [level, row, column] = [[], 3,7];
+level.push(...[[-1, 0], [0, -1], [0, 1], [1, 0]].map(([dr, dc]) => [row + dr, column + dc]));
+console.log(level);
+
+// sort all by first column, important to understand that sorting priority of given to first comparator
+let quadruple = [[1,2,0,1],[1,3,0,1],[0,2,5,1]];
+quadruple.sort(([d1, v1, r1, c1], [d2, v2, r2, c2]) => d1 - d2 || v1 - v2 || r1 - r2 || c1 - c2);
+console.log(quadruple)
+
+//change positions of array
+console.log(quadruple.slice(0, 2).map(([distance, value, row, column]) => [row, column]));
