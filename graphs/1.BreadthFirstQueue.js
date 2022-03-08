@@ -1,4 +1,4 @@
-const breadthFirstStackPrint = (graph, source) => {
+const breadthFirstQueuePrint = (graph, source) => {
 
     // Queue is FIFO
     // FI -> .push() -> entry at end
@@ -38,9 +38,6 @@ const graphBF = {
 
 console.log("Queue program begins\n");
 
-breadthFirstStackPrint(graphBF, 'a');
+breadthFirstQueuePrint(graphBF, 'a');
 
 // O(V + E)
-
-// console.log("Recursive program begins\n");
-// breadthFirstRecursivePrint(graphBF, 'a');
