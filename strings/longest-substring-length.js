@@ -9,7 +9,7 @@
     if(s.length === 1) return 1;
     
     let [left, maxLength, charSet] = [0, 0, new Set()];
-    // bbbbb
+    
     for(let right = 0; right < s.length; right++){
         
         if (left >= s.length) {
