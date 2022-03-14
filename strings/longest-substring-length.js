@@ -1,6 +1,8 @@
 /**
  * @param {string} s
  * @return {number}
+ * @runtime O(n)
+ * @space O(n)
  */
  function lengthOfLongestSubstring(s) {
     
@@ -11,25 +13,20 @@
     let [left, maxLength, charSet] = [0, 0, new Set()];
     
     for(let right = 0; right < s.length; right++){
-        
         if (left >= s.length) {
             // If we found left greater then length of string then we found maxLength
             break;
         }
-
+        // if all characters are same in that case runtime = O(n) + O(n) -> Runtime = O(n), Space = O(1)
         while(charSet.has(s[right])){
             charSet.delete(s[left]);
             left += 1;
         }
-        
         charSet.add(s[right])
         maxLength = Math.max(maxLength, right - left + 1);
-        
     }
-    
     return maxLength;
 }
-
 
 console.log("result: ", lengthOfLongestSubstring(" "));//1
 console.log("result: ", lengthOfLongestSubstring("au"));//2
