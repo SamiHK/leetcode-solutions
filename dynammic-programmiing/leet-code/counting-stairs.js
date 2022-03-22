@@ -23,7 +23,7 @@
  var climbStairs = function(n) {
     
     
-    if(n === null || n === 0 || n < 0) return 0;
+    if( n===null || n===0 || n<0) return 0;
     
     if( n===1 ) return 1;
     

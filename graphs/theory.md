@@ -42,7 +42,7 @@ We pick a point/node and travel as far as possible on that direction and then we
 above list can be traversed by DFT if we start as (a): a->b->d->c->e->b->f
 
 It uses a *stack* for better performance.
-It uses a *LinkedList* for better performance, although *arrays* can be useful.
+It uses a *LinkedList* for better performance in recursive implementation, although *arrays* can be useful.
 
 ### Breadth first traversal.
 We check all neighbours on a certain depth, choice of choosing the first neighbour on a depth level is optional we can choose any.

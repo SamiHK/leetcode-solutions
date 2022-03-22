@@ -1,45 +1,54 @@
+
 const shortestPath = (edges, src, dst) => {
 
+    if(src === dst) return 0;
 
-    const graph = buildGraph(edges);
-    console.log(graph);
+    let graph = buildGraph(edges);
 
+    let visited = new Set([String(src)]);
 
-    const visited = new Set([src]); // adding complete [] of arrays in visited
-    // point to note here is that in the queue we are maintaining the src and the count of its occurence
-    const queue = [[src, 0]];
+    let queue = [ [src, 0] ]; // initially distance is 1
+
+    // Breadth First Search
+
     while(queue.length > 0){
 
-        const[node, distance] = queue.shift();
-        if(node === dst) return distance;
+        let [current, distance] = queue.shift();
 
-        for (const neighbour of graph[node]) {
-            if(!visited.has(String(neighbour))){
-                visited.add(String(neighbour));
-                queue.push([neighbour, distance + 1]);
+        if(current === dst) return distance;
+
+        for(let neighbor of graph[current]){
+
+            if(!visited.has(String(neighbor))){
+                
+                visited.add(String(neighbor));
+
+                queue.push([neighbor, distance +1]); // neighbour has distance +1
             }
         }
     }
+    
     return -1;
 };
 
 
-
-
 const buildGraph = (edges) => {
-    
-    const graph = {};
 
-    for (const edge of edges) {
+    let graph = {};
+
+    for(let edge of edges) {
         const [a, b] = edge;
+        
         if(!(a in graph)) graph[a] = [];
         if(!(b in graph)) graph[b] = [];
+
         graph[a].push(b);
         graph[b].push(a);
+
     }
 
     return graph;
-}
+};
 
 
 const edges = [
@@ -60,7 +69,7 @@ console.log("Shortest Distance:", shortestPath(edges,'w','a')) // -> -1 (not fou
 // Time = O(e)
 // Space = O(n)
 
-// convert edge-list to adjacency-list as traversal algotithms works best on adjacency-list
+// convert edge-list to adjacency-list as traversal algorithms works best on adjacency-list
 //adjacency list is-- a hybrid between an adjacency matrix and an edge list. An adjacency list is an array of linked lists that serves the purpose of representing a graph. What makes it unique is that its shape also makes it easy to see which vertices are adjacent to any other vertices. Each vertex in a graph can easily reference its neighbors through a linked list.
 //Due to this, an adjacency list is the most common representation of a graph. Another reason is that graph traversal problems often require us to be able to easily figure out which nodes are the neighbors of another node. In most graph traversal interview problems, we don't really need to build the entire graph. Rather, it's important to know where we can travel (or in other words, who the neighbors of a node are).
 
