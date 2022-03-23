@@ -25,11 +25,10 @@
 // let p = number of parents
 // O (p log p) here, `p` is smaller than n in average case, `p = n` in worst case)
 // O (p) 
-const findTopKHotelChains = (data, k) => {
 
+const findTopKHotelChains = (data, k) => {
     // map.entries() -> creates an array of key,pairs i.e. [[k1,v1], [k2,v2], ... [kn, vn]]
     let res = [...buildHotelsMap(data).entries()].sort( (a,b) => b[1]-a[1]);
-
     return res.slice(0, k);
 };
 

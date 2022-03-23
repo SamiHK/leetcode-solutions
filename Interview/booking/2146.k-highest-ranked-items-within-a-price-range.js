@@ -5,7 +5,8 @@
 // You should return K hotels within price range and closest to the given origin.
 
 // Input:
-// [[1,2,0,1],
+// [
+// [1,2,0,1],
 // [1,3,0,1],
 // [0,2,5,1]
 // ]
@@ -28,26 +29,21 @@
 const highestRankedKItems = function (grid, pricing, start, k) {
    
     const [min, max] = pricing;
-
     let queue = [start];
-
     let distance = 0;
-
     const res = [];
 
     while(queue.length > 0) {
         
         ++distance;
-
         const level = [];
         
         for (const [row, column] of queue){
             
-            // short circuit checking
+            // short circuit and blocker checking
             if (grid[row] && grid[row][column] && grid[row][column] !== 0) {
 
                 const value = grid[row][column];
-
                 if (value >= min && value <= max)
                 {
                     res.push([distance, value, row, column]);
@@ -65,20 +61,17 @@ const highestRankedKItems = function (grid, pricing, start, k) {
         }
 
         queue = level;
-
         if (k <= res.length) break;
     }
 
     res.sort(([d1, v1, r1, c1], [d2, v2, r2, c2]) => d1 - d2 || v1 - v2 || r1 - r2 || c1 - c2);
-   
-    console.log(res);
-
+    // console.log(res);
     return res.slice(0, k).map(([distance, value, row, column]) => [row, column]);
 };
 
-// let grid = [[1,2,0,1],[1,3,0,1],[0,2,5,1]];
-// let pricing = [2,5];
-// let start = [0,0];
-// let k = 3;
-// console.log(highestRankedKItems(grid, pricing, start, k));
+let grid = [[1,2,0,1],[1,3,0,1],[0,2,5,1]];
+let pricing = [2,5];
+let start = [0,0];
+let k = 3;
+console.log(highestRankedKItems(grid, pricing, start, k));
 
