@@ -29,44 +29,44 @@
 const highestRankedKItems = function (grid, pricing, start, k) {
    
     const [min, max] = pricing;
-    let queue = [start];
+
+    let queue = [start]; // (r,c)
     let distance = 0;
-    const res = [];
+    let res = [];
 
     while(queue.length > 0) {
-        
+
         ++distance;
-        const level = [];
-        
-        for (const [row, column] of queue){
-            
-            // short circuit and blocker checking
-            if (grid[row] && grid[row][column] && grid[row][column] !== 0) {
+        let nextLevel = [];
 
-                const value = grid[row][column];
-                if (value >= min && value <= max)
-                {
-                    res.push([distance, value, row, column]);
+        for(let [row, col] of queue) {
+
+            // checking for bounds and blocker
+            if(grid[row] && grid[row][col] && grid[row][col] > 0){
+
+                let value = grid[row][col];
+                if(value >= min && value <= max){
+                    res.push([distance, value, row, col]);
                 }
+                grid[row][col] = 0; // making current point a blocker to avoid checking it in future
 
-                grid[row][column] = 0;
-                
-                // OPTIMIZATION: add conditions here to check in advance if we have a zero
-                level.push([row-1, column]);
-                level.push([row, column-1]);
-                level.push([row+1, column]);
-                level.push([row, column+1]);
+                nextLevel.push([row+1, col]);
+                nextLevel.push([row-1, col]);
+                nextLevel.push([row, col+1]);
+                nextLevel.push([row, col-1]);
                 // level.push(...[[-1, 0], [0, -1], [0, 1], [1, 0]].map(([dr, dc]) => [row + dr, column + dc]));
             }
         }
-
-        queue = level;
-        if (k <= res.length) break;
+        
+        queue = nextLevel;
+        if(k <= res.length) break;
     }
 
-    res.sort(([d1, v1, r1, c1], [d2, v2, r2, c2]) => d1 - d2 || v1 - v2 || r1 - r2 || c1 - c2);
-    // console.log(res);
-    return res.slice(0, k).map(([distance, value, row, column]) => [row, column]);
+    //arrange results closest to origin i.e. with min distance
+    res = res.sort(([d1,v1,r1,c1],[d2,v2,r2,c2]) =>  d1-d2 || v1-v2 || r1-r2 || c1-c2); 
+
+    // slicing first K values and passing only (row,col) in output
+    return res.slice(0, k).map( ([d,v,r,c]) => [r,c]);
 };
 
 let grid = [[1,2,0,1],[1,3,0,1],[0,2,5,1]];
