@@ -22,28 +22,6 @@
  * 4. Call cneter operates 7 days a week.
  */
 
-// employees  -> e1(0), e2(0), e3(0), e4(0), e5(0)
-// d1 e=3 : e1(1), e2(1), e3(1)
-
-// employees  ->  e4(0), e5(0), e1(1), e2(1), e3(1)
-// d2 e=3 : e4(1), e5(1), e1(2)
-
-// employees  ->  e2(1), e3(1), e4(1), e5(1), e1(2)
-// d3 e=3 : e2(2), e3(2), e4(2)
-
-// employees  ->  e5(1), e1(2), e2(2), e3(2), e4(2)
-// d4 e=3 : e5(2), e1(3), e2(3)
-
-// employees  ->  e3(2), e4(2), e5(2), e1(3), e2(3)
-// d5 e=3 : e3(3), e4(3), e5(3)
-
-// employees  ->  e1(3), e2(3), e3(3), e4(3), e5(3)
-// d6 e=3 : e1(4), e2(4), e3(4)
-
-// employees  -> e4(3), e5(3), e1(4), e2(4), e3(4)
-// d7 e=3 : e4(4), e5(4), e1(5)
-
-
 // --------------------------------------------------
 // Employee 1: English, Dutch -> e1
 // Employee 2: English, Dutch -> e2
@@ -56,30 +34,30 @@
 // We have = 5 english, 6 Dutch, 4 spanish
 // select employee based on language priority
 
-// employees  -> e1([e,d]  0), e2([e,d]  0), e3([e,d]  0), e4([e,s]  0), e5([e,d,s]  0), e6([d,s]  0), e7([d,s]  0)
+// employeesQueue  -> e1([e,d]  0), e2([e,d]  0), e3([e,d]  0), e4([e,s]  0), e5([e,d,s]  0), e6([d,s]  0), e7([d,s]  0)
 // d1 e=3, d=2, s=1 : e1([e,d]  1), e2([e,d]  1), e4([e,s]  1)
 
-// employees  ->  e3([e,d]  0), e5([e,d,s]  0), e6([d,s]  0), e7([d,s]  0), e1([e,d]  1), e2([e,d]  1), e4([e,s]  1)
+// employeesQueue  ->  e3([e,d]  0), e5([e,d,s]  0), e6([d,s]  0), e7([d,s]  0), e1([e,d]  1), e2([e,d]  1), e4([e,s]  1)
 // d2 e=3, d=3, s=1 : e3([e,d]  1), e5([e,d,s]  1), e1([e,d]  2)
 
-// employees  ->  e6([d,s]  0), e7([d,s]  0), e2([e,d]  1), e4([e,s]  1), e3([e,d]  1), e5([e,d,s]  1), e1([e,d]  2)
+// employeesQueue  ->  e6([d,s]  0), e7([d,s]  0), e2([e,d]  1), e4([e,s]  1), e3([e,d]  1), e5([e,d,s]  1), e1([e,d]  2)
 // d3 e=3, d=3, s=2 : e6([d,s]  1), e2([e,d]  2), e4([e,s]  2), e3([e,d]  2)
 
-// employees  -> e7([d,s]  0), e5([e,d,s]  1), e1([e,d]  2), e6([d,s]  1), e2([e,d]  2), e4([e,s]  2), e3([e,d]  2)
+// employeesQueue  -> e7([d,s]  0), e5([e,d,s]  1), e1([e,d]  2), e6([d,s]  1), e2([e,d]  2), e4([e,s]  2), e3([e,d]  2)
 // d4 e=3, d=4, s=2 : e7([d,s]  1), e5([e,d,s]  2), e1([e,d]  3), e2([e,d]  3)
 
-// employees  ->  e6([d,s]  1), e4([e,s]  2), e3([e,d]  2), e7([d,s]  1), e5([e,d,s]  2), e1([e,d]  3), e2([e,d]  3)
+// employeesQueue  ->  e6([d,s]  1), e4([e,s]  2), e3([e,d]  2), e7([d,s]  1), e5([e,d,s]  2), e1([e,d]  3), e2([e,d]  3)
 // d5 e=3, d=3, s=3 : e6([d,s]  2), e4([e,s]  3), e3([e,d]  3), e5([e,d,s]  3)
 
-// employees  ->  e7([d,s]  1), e1([e,d]  3), e2([e,d]  3), e6([d,s]  2), e4([e,s]  3), e3([e,d]  3), e5([e,d,s]  3)
+// employeesQueue  ->  e7([d,s]  1), e1([e,d]  3), e2([e,d]  3), e6([d,s]  2), e4([e,s]  3), e3([e,d]  3), e5([e,d,s]  3)
 // d6 e=3, d=3, s=2 : e7([d,s]  2), e1([e,d]  4), e2([e,d]  4), e4([e,s]  4)
 
-// employees  -> e6([d,s]  2), e3([e,d]  3), e5([e,d,s]  3), e7([d,s]  2), e1([e,d]  4), e2([e,d]  4), e4([e,s]  4)
+// employeesQueue  -> e6([d,s]  2), e3([e,d]  3), e5([e,d,s]  3), e7([d,s]  2), e1([e,d]  4), e2([e,d]  4), e4([e,s]  4)
 // d7 e=3, d=4, s=2 : e6([d,s]  3), e3([e,d]  4), e5([e,d,s]  4), e1([e,d]  5)
 
 
 // Next Week:
-// employees  ->  e7([d,s]  0), e2([e,d]  0), e4([e,s]  0), e6([d,s]  0), e3([e,d]  0), e5([e,d,s]  0), e1([e,d]  0)
+// employeesQueue  ->  e7([d,s]  0), e2([e,d]  0), e4([e,s]  0), e6([d,s]  0), e3([e,d]  0), e5([e,d,s]  0), e1([e,d]  0)
 
 
 // --------------------------------------------------
