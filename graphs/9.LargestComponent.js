@@ -2,18 +2,18 @@
 
 const largestComponent = (graph) => {
 
-    const visited = new Set(); 
-    // Make sure to add keys as string as Set can create a key of 0 as integer / String / both that can effect results.
+    const visited = new Set();
+
     let longest = 0;
-    
 
-    for (const node in graph) {
+    for(let node in graph){
 
-        const size = exploreSize(graph, node, visited);
-        if(size > longest) longest = size;
-         
+        let size = exploreSize(graph, node, visited);
+        if(size > longest) {
+            longest = size;
+        }
     }
-    
+
     return longest;
 };
 
@@ -24,12 +24,12 @@ const exploreSize = (graph, node, visited) =>{
 
     visited.add(String(node)); // Important to set Key as String to avoid number key duplicates
 
-    console.log(visited);
+    // console.log(visited);
 
     let size = 1;
 
-    for (const neighbour of graph[node]) {
-        size += exploreSize(graph, neighbour, visited);
+    for(let neighbor of graph[node]){
+        size += exploreSize(graph, neighbor, visited);
     }
 
     return size;

@@ -74,7 +74,8 @@ const heapDelete = (nums, n) => {
     let tmp = nums[0];  // (optional)
 
     // Get the last element
-    let lastElement = nums[n - 1];    nums[n-1] = tmp; // -< optional to replace
+    let lastElement = nums[n - 1];    
+    nums[n-1] = tmp; // -< optional to replace
    
     // Replace root with first element
     nums[0] = lastElement;

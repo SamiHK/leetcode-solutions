@@ -1,32 +1,28 @@
-// find number of connected componenets of undirected graph
+const connectedComponentsCountRecursive = (graph) => {
 
-const connectedComponentsCount = (graph) => {
-
-    const visited = new Set(); 
-    
-    let countSegments = 0;
-
-    for(let neighbor in graph){
-
-        if(explore(graph, neighbor, visited) === true){
-            countSegments +=1;
+    const visited =  new Set();
+    let segments = 0;
+    // checking every node of graph
+    for(let node in graph){
+        // exploring connections of every node
+        if(exploreRecursive(graph, node, visited) === true){
+            // if there is a connection, its a segment
+            segments +=1;
         }
+
     }
 
-    return countSegments;
+    return segments;
 };
 
 
-const explore = (graph, node, visited) =>{
+const exploreRecursive = (graph, node, visited) => {
 
-    if(visited.has(String(node))) return false; // Important to set Key as String to avoid number key duplicates
-    visited.add(String(node)); // Important to set Key as String to avoid number key duplicates
+    if(visited.has(String(node))) return false;
+    else visited.add(String(node));
 
-    console.log(visited);
-
-    for (const neighbour of graph[node]) {
-        // recursive
-        explore(graph, neighbour, visited);
+    for(let neighbor of graph[node]){
+        exploreRecursive(graph, neighbor, visited);
     }
 
     return true;
@@ -42,7 +38,10 @@ const graph = {
     4:[3,2]
 }; // -> 2
 
-console.log("Count: ", connectedComponentsCount(graph));
+console.log("Count: ", connectedComponentsCountRecursive(graph));
+
+// Q: find number of connected componenets of undirected graph
+
 
 //    5 
 //    |\   = 1

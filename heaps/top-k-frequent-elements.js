@@ -33,10 +33,12 @@ function topKFrequent(nums, k) {
 }
 
 class Heap {
+
     constructor(property) {
         this.data = [];
         this.property = property;
     }
+
     build(arr) {
         this.data = [...arr];
         const n = this.size();
@@ -44,6 +46,7 @@ class Heap {
             this.heapify(idx);
         }
     }
+
     getTopK(k) {
         const result = new Array();
         while(k && this.size()) {
@@ -55,9 +58,11 @@ class Heap {
         }
         return result;
     }
+
     size() {
         return this.data.length;   
     }
+
     heapify(idx) {
         const ltIdx = 2 * idx + 1,
               rtIdx = 2 * idx + 2;
@@ -74,15 +79,23 @@ class Heap {
             this.heapify(propertyIdx);
         }
     }
+
     compare(idx1, idx2) { 
         switch(this.property) {
             case 'MAX': return this.data[idx1] > this.data[idx2]; break;
             case 'MIN': return this.data[idx1] < this.data[idx2]; break;
         }
     }
+
 }
 class MaxHeap extends Heap {
     constructor() {
         super('MAX');
+    }
+}
+
+class MinHeap extends Heap {
+    constructor() {
+        super('MIN');
     }
 }
