@@ -37,22 +37,20 @@ const buildHotelsMap = (data) => {
 
     let parentHotelsMap = new Map();
 
-    for(let i = 0; i < data.length; i++){
+    for(let edge of data){
 
-        let hId = data[i][0];
-        let pId = data[i][1];
-        let wgt = data[i][2];
+        let [hId, pId, weight] = edge;
 
         if(!parentHotelsMap.has( String(pId) ) && pId !== null){
-            parentHotelsMap.set( String(pId), wgt);
+            parentHotelsMap.set( String(pId), weight);
         } else {
 
             if(pId === null) {
-                let oldWht = parentHotelsMap.get(String(hId)) ? parentHotelsMap.get(String(hId)) : 0;
-                parentHotelsMap.set( String(hId), wgt + oldWht);
+                let oldWeight = parentHotelsMap.get(String(hId)) ? parentHotelsMap.get(String(hId)) : 0;
+                parentHotelsMap.set( String(hId), weight + oldWeight);
                 continue;
             } else {
-                parentHotelsMap.set( String(pId), wgt + parentHotelsMap.get( String(pId)));
+                parentHotelsMap.set( String(pId), weight + parentHotelsMap.get( String(pId)));
             }
 
             //check if child exist as parent?
