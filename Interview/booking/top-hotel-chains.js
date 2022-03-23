@@ -35,35 +35,32 @@ const findTopKHotelChains = (data, k) => {
 // O(n), O(p)
 const buildHotelsMap = (data) => {
 
-    let parentHotelsMap = new Map();
+    let hotelsMap = new Map();
 
     for(let edge of data){
 
-        let [hId, pId, weight] = edge;
+        let [hid, pid, weight] = edge;
 
-        if(!parentHotelsMap.has( String(pId) ) && pId !== null){
-            parentHotelsMap.set( String(pId), weight);
+        if(!hotelsMap.has( String(pid) ) && pid !== null){
+            hotelsMap.set( String(pid), weight);
         } else {
-
-            if(pId === null) {
-                let oldWeight = parentHotelsMap.get(String(hId)) ? parentHotelsMap.get(String(hId)) : 0;
-                parentHotelsMap.set( String(hId), weight + oldWeight);
-                continue;
+            if(pid === null) {
+                let oldWeight = hotelsMap.get(String(hid)) ? hotelsMap.get(String(hid)) : 0;
+                hotelsMap.set( String(hid), weight + oldWeight);
             } else {
-                parentHotelsMap.set( String(pId), weight + parentHotelsMap.get( String(pId)));
-            }
-
-            //check if child exist as parent?
-            if(parentHotelsMap.has(String(hId))){
-                // if yes, then add its weight to its parent
-                parentHotelsMap.set( String(pId), parentHotelsMap.get(String(pId)) + parentHotelsMap.get( String(hId)));
-                // delete this child
-                parentHotelsMap.delete( String(hId))
+                hotelsMap.set( String(pid), weight + hotelsMap.get( String(pid)));
+                //check if child exist as parent?
+                if(hotelsMap.has(String(hid))){
+                    // if yes, then add its weight to its parent
+                    hotelsMap.set( String(pid), hotelsMap.get(String(pid)) + hotelsMap.get( String(hid)));
+                    // delete this child
+                    hotelsMap.delete( String(hid))
+                }
             }
         }
     }
 
-    return parentHotelsMap;
+    return hotelsMap;
 };
 
 
@@ -82,6 +79,8 @@ let data = [
     [ 13, 0, 1],
     [ 14, 2, 9]
 ]
+
+// 0 = 69, 6 = 37, 2 = 40  
 // (0,69), (6,37), (2,40) 
 console.log(findTopKHotelChains(data, 2));
 // o/p: if k =2:
