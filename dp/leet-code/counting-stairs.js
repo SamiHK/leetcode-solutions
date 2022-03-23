@@ -20,25 +20,22 @@
  * @param {number} n
  * @return {number}
  */
- var climbStairs = function(n) {
+var climbStairs = function(n) {
     
-    
-    if( n===null || n===0 || n<0) return 0;
-    
-    if( n===1 ) return 1;
-    
-    if( n===2 ) return 2;
+    if(n === null || n < 0) return 0;
+    if(n === 1) return 1;
+    if(n === 2) return 2;
 
-    // create a base case
-    let results = new Array(n).fill(0);
-    results[0] = 1;
-    results[1] = 2;
 
-    for (let index = 2; index <= n; index++) {
-        results[index] = (results[index-1] + results[index-2]);
+    let table = new Array(n).fill(0);
+    table[0] = 1;
+    table[1] = 2;
+
+    for(let step = 2; step <= n; step++){
+        table[step] = table[step-1] + table[step-2];
     }
-    
-    return results[n-1];
+
+    return table[n-1];
 };
 
 
