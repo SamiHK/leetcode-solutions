@@ -10,36 +10,37 @@ class Node{
 
 
 const depthFirstTraversalRecursive = (root) => {
-    
+
     if(!root) return [];
 
     let leftValues = depthFirstTraversalRecursive(root.left);
     let rightValues = depthFirstTraversalRecursive(root.right);
 
-    return [...root.val, ...leftValues, ...rightValues]
+    return [...root.val, ...leftValues, ...rightValues];
+    
 };
 
 const depthFirstTraversal  = (root) => {
 
-    if(!root) return [];
+    if(!root) return []
 
     let traversals = [];
 
     let stack = [root];
 
-    while(stack.length > 0){
+    while(stack.length > 0) {
 
-        const current = stack.pop();
+        let node = stack.pop();
 
-        traversals.push(current.val);
+        if(node.val) traversals.push(node.val);
 
-        if(current.left) stack.push(current.left);
-        if(current.right) stack.push(current.right);
+        if(node.left) stack.push(node.left);
+
+        if(node.right) stack.push(node.right);
 
     }
 
     return traversals;
-    
 };
 
 

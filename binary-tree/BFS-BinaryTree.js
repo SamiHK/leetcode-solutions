@@ -8,20 +8,20 @@ class Node{
 
 const breadthFirstTraversal = (root) => {
 
-    if(!root) return [];
-    
+    if(!root) [];
+
+    let queue = [root];
     let traversals = [];
 
-    const queue = [root];
-    
-    while(queue.length > 0) {
+    while(queue.length > 0){
 
-        let current = queue.shift();
+        let node = queue.shift();
 
-        traversals.push(current.val);
+        if(node.val) traversals.push(node.val);
 
-        if(current.left) queue.push(current.left);
-        if(current.right) queue.push(current.right);
+        if(node.left) queue.push(node.left);
+
+        if(node.right) queue.push(node.right);
 
     }
 
