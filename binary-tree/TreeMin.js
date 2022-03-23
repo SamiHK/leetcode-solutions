@@ -11,10 +11,12 @@ const  breadthFirstFindMin = (root) => {
     if(root === null) return 0;
 
     const queue = [root];
+    
     let min = Infinity;
 
     while(queue.length > 0){
         const current = queue.shift();
+        
         if(current.val < min) min = current.val;
 
         if(current.left !== null) queue.push(current.left); 
@@ -46,11 +48,12 @@ const  depthFirstFindMin = (root) => {
 const depthFirstRecursiveFindMin = (root) => {
     
     if(root === null) return Infinity;
-    
-    const leftValue = depthFirstRecursiveFindMin(root.left);
-    const rightValue = depthFirstRecursiveFindMin(root.right);
-    
+
+    let leftValue = depthFirstRecursiveFindMin(root.left);
+    let rightValue = depthFirstRecursiveFindMin(root.right);
+
     return Math.min(root.val, leftValue, rightValue);
+
 };
 
 

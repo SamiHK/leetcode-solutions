@@ -8,12 +8,16 @@ class Node{
 
 // for path finders ITERATIVE will not be optimal solutions as the need to maintain branches' state will cost lots of space
 // for path finding APPROACH will be the preferred way
+
+
 const depthFirstRecursiveMaxRootToLeafPath = (root) => {
-
     if(root === null) return 0;
-    return Math.max(root.val + depthFirstRecursiveMaxRootToLeafPath(root.left) + depthFirstRecursiveMaxRootToLeafPath(root.right));
-};
 
+    let leftPath = root.val + depthFirstRecursiveMaxRootToLeafPath(root.left);
+    let rightParh = root.val + depthFirstRecursiveMaxRootToLeafPath(root.right);
+
+    return Math.max(leftPath, rightParh);
+};
 
 const a = new Node(9);
 const b = new Node(10);

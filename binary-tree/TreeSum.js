@@ -6,18 +6,20 @@ class Node{
     }
 }   
 
-const  breadthFirstSum = (root) => {
-    if(root === null) return 0;
+const breadthFirstSum = (root) => {
+    if(root === null) return 0
 
+    let sum  = 0;
     const queue = [root];
-    let sum = 0;
 
     while(queue.length > 0){
-        const current = queue.shift();
-        sum += current.val;
 
-        if(current.left !== null) queue.push(current.left); 
-        if(current.right !== null) queue.push(current.right); 
+        let current = queue.shift();
+        if(current.val !== null) sum += current.val;
+
+        if(current.right !== null) queue.push(current.right);
+        if(current.left !== null) queue.push(current.left);
+
     }
 
     return sum;
@@ -25,17 +27,20 @@ const  breadthFirstSum = (root) => {
 
 
 
-const  depthFirstSum = (root) => {
-    if(root === null) return 0;
+const depthFirstSum = (root) => {
 
+    if(root === null) return 0
+
+    let sum  = 0;
     const stack = [root];
-    let sum = 0;
 
     while(stack.length > 0){
+
         const current = stack.pop();
-        sum += current.val;
-        if(current.right) stack.push(current.right);
-        if(current.left) stack.push(current.left);
+        if(current.val !== null) sum += current.val;
+
+        if(current.right !== null) stack.push(current.right);
+        if(current.left !== null) stack.push(current.left);
     }
 
     return sum;
