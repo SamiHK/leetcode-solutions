@@ -34,6 +34,8 @@
 // We have = 5 english, 6 Dutch, 4 spanish
 // select employee based on language priority
 
+// required: 3 english, 2 dutch and 1 spanish 
+
 // employeesQueue  -> e1([e,d]  0), e2([e,d]  0), e3([e,d]  0), e4([e,s]  0), e5([e,d,s]  0), e6([d,s]  0), e7([d,s]  0)
 // d1 e=3, d=2, s=1 : e1([e,d]  1), e2([e,d]  1), e4([e,s]  1)
 
