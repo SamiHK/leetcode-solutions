@@ -25,8 +25,12 @@ console.log(a << b); // 00000000000000000000000000010100
 
 
 // Bitwise Right Shift
-console.log(a >> b);  //  00000000000000000000000000000001
-// expected output: 0
+b = 3;// moving three times in right reduces it ti o
+console.log(a >> b);  // expected output: 0
+// if b = 0 ,  00000000000000000000000000000101
+// if b = 1 ,  00000000000000000000000000000010
+// if b = 2 ,  00000000000000000000000000000001
+
 console.log(c >> b);  // -00000000000000000000000000000010
 // expected output: -1
 
