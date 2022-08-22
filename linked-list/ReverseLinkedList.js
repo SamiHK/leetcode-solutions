@@ -6,25 +6,39 @@ class Node{
 	}
 }
 
-const iterativeReverselinkedNode = (head) => {
-	let current = head;
-    let previous = null;
-	while(current != null) {
-        let next = current.next;
-		current.next = previous;
-        previous = current;
-        current = next;
-	}
-    return previous; // tail becomes head and vice versa
-};
 
-// null ----> a ------> b --------> c --------> null
-// prev ---->curr------>next
+// ----> a ------> b --------> c ----> d ----> e ----->
+// Array Impl [a,b,c,d,e] -> [e,d,c,b,a] XX -> OK
+
+// {null} = prev, a = current, b = next; // ----> a ------> b --------> c ----> d ----> e ----->
+// {a->null} = prev, b = current, c = next // null ------x b --------> c ----> d ----> e ----->
+// {b->a->null}= prev, c = current, d = next // null ------ null --------x c ----> d ----> e ----->
+// {c->b->a->null}= prev, d = current, e = next // null ------ null -------- null ----x d ----> e ----->
+// {d->c->b->a->null}= prev, e = current, null = next // null ------ null -------- null ---- null ----> e ----->
+// {e->d->c->b->a->null}= prev, null = current, null = next null -> // null ------ null -------- null ---- null ---- null ----- Terminate
+const iterativeReverselinkedNode = (head) => {
+    let prev = null;
+    if(head === null) return prev;
+
+    let curr = head;
+    let next = curr.next;
+
+    while(head != null){
+        curr.next = prev;
+        prev = curr;
+
+        head = head.next
+        curr = head;
+    } 
+
+    return prev;
+};
 
 const recursiceReverselinkedNode = (head, previous = null) => {
     if(head === null) return previous;
-    const next = head.next;
-    head.next = previous;
+    // null ----> a ------> b --------> c ----> d ----> e -----> null
+    const next = head.next; // b
+    head.next = previous; // null 
     return recursiceReverselinkedNode(next, head);
 };
 
