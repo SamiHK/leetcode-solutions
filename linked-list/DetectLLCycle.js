@@ -20,13 +20,14 @@ const iterativeDetectCyclelinkedList = (head) => {
     return false;
 };
 
+// var z =  new Node('z');
 var a =  new Node('a');
 var b =  new Node('b');
 var c =  new Node('c');
 var d =  new Node('d');
 var e =  new Node('e');
 var f =  new Node('f');
-
+// z.next = a
 a.next = b;
 b.next = c;
 c.next = d;
