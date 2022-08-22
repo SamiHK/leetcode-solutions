@@ -16,31 +16,86 @@ class Node{
 // {c->b->a->null}= prev, d = current, e = next // null ------ null -------- null ----x d ----> e ----->
 // {d->c->b->a->null}= prev, e = current, null = next // null ------ null -------- null ---- null ----> e ----->
 // {e->d->c->b->a->null}= prev, null = current, null = next null -> // null ------ null -------- null ---- null ---- null ----- Terminate
-const iterativeReverselinkedNode = (head) => {
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+    
+    if(head === null || head.next == null) return head;
+    
     let prev = null;
-    if(head === null) return prev;
-
     let curr = head;
-    let next = curr.next;
-
-    while(head != null){
+    while(curr !== null){
+        
+        let next = curr.next;
+        
         curr.next = prev;
         prev = curr;
-
-        head = head.next
-        curr = head;
-    } 
-
+        curr = next;
+    }
     return prev;
 };
 
-const recursiceReverselinkedNode = (head, previous = null) => {
-    if(head === null) return previous;
-    // null ----> a ------> b --------> c ----> d ----> e -----> null
-    const next = head.next; // b
-    head.next = previous; // null 
-    return recursiceReverselinkedNode(next, head);
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ const reverseListRecursive = (head, prev = null) => {
+    
+    if(head === null) return prev;
+    
+    let next = head.next;
+    head.next = prev
+
+    return reverseListRecursive(next, head);
 };
+
+
+/**
+       null -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+       prev  curr  next
+       --------------------------------------
+       null -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+       prev = null, curr = 1, next = 2
+       --------------------------------------
+       --------------------------------------
+       1->null  ->            2 -> 3 -> 4 -> 5 -> null
+       prev = 1->null, curr = 2, next = 3
+       --------------------------------------
+       --------------------------------------
+       2->1->null            -> 3 -> 4 -> 5 -> null
+       prev  2->1->null, curr = 3, next = 4
+       --------------------------------------
+       --------------------------------------
+       3->2->1->null            -> 4 -> 5 -> null
+       prev  3->2->1->null, curr = 4, next = 5
+       --------------------------------------
+       --------------------------------------
+       4->3->2->1->null             -> 5 -> null
+       prev  4->3->2->1->null, curr = 5, next = null
+       --------------------------------------
+       --------------------------------------
+       5->4->3->2->1->null          
+       prev  5->4->3->2->1->null[answer], curr = null [Reversed]
+       --------------------------------------
+       
+       
+        [1,2,3,4,5]
+        [1,2]
+        []
+**/
+
+
+
 
 
 var a =  new Node('a');
@@ -60,7 +115,7 @@ e.next = f;
 // n = # of nodes
 // Time = O(n)
 // Space = O(1) ----> Preffered way 
-console.log(iterativeReverselinkedNode(a));
+console.log(reverseList(a));
 
 // since list was reversed creating again
 a =  new Node('a');
@@ -80,4 +135,4 @@ e.next = f;
 // n = # of nodes
 // Time = O(n)
 // Space = O(n) -> considering call stack here
-console.log(recursiceReverselinkedNode(a));
+// console.log(reverseListRecursive(a));
