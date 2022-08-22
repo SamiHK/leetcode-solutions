@@ -1,6 +1,5 @@
 class Node{
-	constructor(val)
-	{
+	constructor(val){
 		this.val = val;
 		this.next = null;
 	}
@@ -8,18 +7,18 @@ class Node{
 
 
 const iterativeFindlinkedList = (head, target) => {
-	let current = head;
-	while(current != null) {
-		if(current.val === target) return true;
-		else current = current.next;
+	if(head === null || target === null) return false;
+	while(head){
+		if(target === head.val) return true;
+		head = head.next;
 	}
-    return false;
+	return false;
 };
 
 const recursiceFindlinkedList = (head, target) => {
-    if(head === null) return false;
+	if(head === null) return false;
 	if(head.val === target) return true;
-	return recursiceFindlinkedList(head.next, target);
+	return recursiceFindlinkedList(head.next, target); // return chaining
 };
 
 

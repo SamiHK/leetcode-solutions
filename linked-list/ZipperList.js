@@ -8,42 +8,54 @@ class Node{
 }
 
 const zipperList = (head1, head2) => {
-    
-    let tail = head1;
-    let current1 = head1.next;
-    let current2 = head2;
+    // head a->b->c->d->e tail
+    // head x->y->z tail
+
+    // a->x->b->y->c->z->d->e
+
+    if(head1 === null && head2 === null) return null;
+    if(head1 === null) return head2;
+    if(head2 === null) return head1;
+
+    let final = head1;
+
+    let next1 = head1.next;
+    let next2 = head2; // will be filled next as head1 was already used
     let count = 0;
 
-    while(current1 !== null && current2 !== null){
+    while(next1 !== null && next2 !== null){
         if(count % 2 === 0){
-            tail.next = current2;
-            current2 = current2.next;
+            final.next = next2;
+            next2 = next2.next;
         } else {
-            tail.next = current1;
-            current1 = current1.next;
+            final.next = next1;
+            next1 = next1.next;
         }
 
-        tail = tail.next;
-        count += 1;
+        final = final.next;
+        count = count + 1;
     }
 
-    if(current1 !== null) tail.next = current1;
-    if(current2 !== null) tail.next = current2;
+    if(next1 !== null) final.next = next1;
+    if(next2 !== null) final.next = next2;
 
     return head1;
 };
 
 
 const zipperListRecursive = (head1, head2) => {
-    
-    if(head1 === null && head2 === null) return null;
+    // head a->b->c->d->e tail
+    // head x->y->z tail
 
+    // a->x->b->y->c->z->d->e
+
+    if(head1 === null && head2 === null) return null;
     if(head1 === null) return head2;
     if(head2 === null) return head1;
-    
+
     const next1 =  head1.next;
     const next2 =  head2.next;
-    
+
     head1.next = head2;
     head2.next = zipperListRecursive(next1, next2);
 
