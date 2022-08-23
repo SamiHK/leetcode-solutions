@@ -6,7 +6,7 @@
 class TrieNode{
     constructor(value){
         this.value = value;
-        this.children = new Map();
+        this.children = {};
         this.end = false;
     }
 }
