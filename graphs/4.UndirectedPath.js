@@ -61,12 +61,12 @@ hasUndirectedPath(edges,'j','m') // -> true
 // Time = O(e)
 // Space = O(n)
 
-//convert edge-list to adjacency-list as traversal algorithms works best on adjacency-list
-//adjacency list is-- a hybrid between an adjacency matrix and an edge list. An adjacency list 
-//is an array of linked lists that serves the purpose of representing a graph. What makes it unique 
-//is that its shape also makes it easy to see which vertices are adjacent to any other vertices. 
-//Each vertex in a graph can easily reference its neighbors through a linked list.
-//Due to this, an adjacency list is the most common representation of a graph. Another reason is that 
-//graph traversal problems often require us to be able to easily figure out which nodes are the neighbors 
-//of another node. In most graph traversal interview problems, we don't really need to build the entire graph. 
-//Rather, it's important to know where we can travel (or in other words, who the neighbors of a node are).
+// convert edge-list to adjacency-list as traversal algorithms works best on adjacency-list
+// adjacency list is-- a hybrid between an adjacency matrix and an edge list. An adjacency list 
+// is an array of linked lists that serves the purpose of representing a graph. What makes it unique 
+// is that its shape also makes it easy to see which vertices are adjacent to any other vertices. 
+// Each vertex in a graph can easily reference its neighbors through a linked list.
+// Due to this, an adjacency list is the most common representation of a graph. Another reason is that 
+// graph traversal problems often require us to be able to easily figure out which nodes are the neighbors 
+// of another node. In most graph traversal interview problems, we don't really need to build the entire graph. 
+// Rather, it's important to know where we can travel (or in other words, who the neighbors of a node are).

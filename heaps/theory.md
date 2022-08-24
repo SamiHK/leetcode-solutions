@@ -58,7 +58,7 @@ Covering the following topics will help building logics using Heap as a Data Str
 ### COMPLETE Binary Tree and FULL Binary 
     * FULL BINARY TREE
     - In Full Binary Tree, at any height of this type of binary tree we have maximum number of nodes
-    - If height of binary tree is (h) then, a full-binary-tree will have [ 2(power(h+1)) - 1 ] nodes 
+    - If height of binary tree is (h) then, a full-binary-tree have nodes = [2 power (h+1) - 1 ] 
 
     * COMPLETE BINARY TREE
     - A full binary tree is also a complete binary tree
@@ -113,8 +113,8 @@ COMPLETE BINARY TREE
                  a
               /     \
              b       c
-           /   \   
-          d      e  
+                   /   \   
+                  d      e  
 
        arr = [A,B,C,-,-,D,E]
               1,2,3,4,5,6,7
@@ -401,9 +401,10 @@ There are two types of Heap:
                 1 ,2 , 3, 4, 5
 
 
-       COMPLEXITY = we deleted (n) elements from binary tree of height log(n)
-       Time = O(n log(n))
-       Space = O(n)
+       COMPLEXITY = we deleted (n) elements from binary tree of height log(n), and on every delete log(n) swaps are possible.
+
+       Time = O(n log(n)) = worst case O(n) best case
+       Space = O(n) = worst case, O(1) best case
 
 
 ----------------------------------------------------------------------------------------------
