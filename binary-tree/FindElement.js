@@ -44,10 +44,10 @@ const depthFirstRecursiveFind = (root, target) => {
     if(root === null) return false;
     if(root.val === target) return true;
 
-    const leftValues = depthFirstRecursiveFind(root.left, target);
-    const rightValues = depthFirstRecursiveFind(root.right, target); 
-
-    return leftValues || rightValues;
+    let leftFind = depthFirstRecursiveFind(root.left, target);
+    let rightFind = depthFirstRecursiveFind(root.right, target);
+    
+    return leftFind || rightFind;
 };
 
 
@@ -68,11 +68,14 @@ b.right = e;
 c.right = f;
 
 console.log("Find BFT Queue:", breadthFirstFind(a, 'e'));
-console.log("Find DFT Stack:", depthFirstFind(a,'e'));
-console.log("Find DFT Stack Recursive:", depthFirstRecursiveFind(a,'e'));
-
 console.log("Find BFT Queue:", breadthFirstFind(a, 'z'));
+console.log("Find DFT Stack:", depthFirstFind(a,'e'));
 console.log("Find DFT Stack:", depthFirstFind(a,'z'));
+console.log("Find DFT Stack Recursive:", depthFirstRecursiveFind(a,'e'));
+console.log("Find DFT Stack Recursive:", depthFirstRecursiveFind(a,'z'));
+
+
+
 
 //       A
 //      / \
