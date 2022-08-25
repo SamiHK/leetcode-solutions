@@ -46,14 +46,10 @@ const  depthFirstFindMin = (root) => {
 };
 
 const depthFirstRecursiveFindMin = (root) => {
-    
-    if(root === null) return Infinity;
-
-    let leftValue = depthFirstRecursiveFindMin(root.left);
-    let rightValue = depthFirstRecursiveFindMin(root.right);
-
-    return Math.min(root.val, leftValue, rightValue);
-
+   if(root === null) return Infinity;
+   let lv = depthFirstRecursiveFindMin(root.left);
+   let rv = depthFirstRecursiveFindMin(root.right);
+   return Math.min(root.val, lv, rv);
 };
 
 
@@ -82,3 +78,4 @@ console.log("FindMin DFT Stack Recursive:", depthFirstRecursiveFindMin(a));
 //    /\    \
 // D(1) E(7) F(2)
 // sum = 9+10+11+1+7+2 = 41
+// min = 1

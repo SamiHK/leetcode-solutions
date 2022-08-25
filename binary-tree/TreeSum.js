@@ -47,15 +47,10 @@ const depthFirstSum = (root) => {
 };
 
 const depthFirstRecursiveSum = (root) => {
-    
     if(root === null) return 0
-    /*
-    let sum = root.val;
-    const leftValue = depthFirstRecursiveSum(root.left);
-    const rightValue = depthFirstRecursiveSum(root.right); 
-    return sum + leftValue + rightValue;
-    */
-    return root.val + depthFirstRecursiveSum(root.left) + depthFirstRecursiveSum(root.right);
+    const lv = depthFirstRecursiveSum(root.left);
+    const rv = depthFirstRecursiveSum(root.right); 
+    return root.val + leftValue + rightValue;    
 };
 
 
