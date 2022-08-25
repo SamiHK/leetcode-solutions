@@ -7,10 +7,11 @@ Tree contains parent nodes and child nodes.
           Root (parent of all nodes, and has no parent and there are no arrows that goes into A)
             A
            / \
-Parent&c  B   C parent&child
+          B   C  parent & child
          /\    \
-Child   D  E    F child&leaf
-& leaf     Child&leaf
+        D  E    F child & leaf
+
+
 
 
 ### Unary Tree
@@ -46,12 +47,15 @@ A Binary Tree can have the following traversals:
 ### Complexities
 
 BFT complexity:
+QUEUE BASED on LL;
 
-if n = # of nodes
-Time  = O(n)
+if n = # of nodes, h = 2*h i.e. at most nodes in last level
 Space = O(n)
+Time  = O(n) // enqueue O(1) * n = O(n),  dequeue h * n = O(h * n) -> h can be maximum nodes in queue and deque shifts the array;
+
 
 DFT complexity:
+STACK BASED on LL
 if n = # of nodes
-Time  = O(n) ~ assuming we use queue since addition and removal from queue are constants i.e. O(1).
 Space = O(n)
+Time  = O(n) ~ assuming we use stack since addition and removal from stack are constants i.e. O(1).

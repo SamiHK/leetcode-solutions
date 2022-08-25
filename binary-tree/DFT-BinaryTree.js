@@ -1,44 +1,44 @@
-const { sample } = require("lodash");
-
 class Node{
-    constructor(val) {
+    constructor(val){
         this.val = val;
         this.left = null;
         this.right = null;
     }
-}          
+}         
 
 
 const depthFirstTraversalRecursive = (root) => {
 
-    if(!root) return [];
+    if(root === null) return [];
 
     let leftValues = depthFirstTraversalRecursive(root.left);
-    let rightValues = depthFirstTraversalRecursive(root.right);
-
-    return [...root.val, ...leftValues, ...rightValues];
-    
+    let rightValues =  depthFirstTraversalRecursive(root.right)
+    // PRE-ORDER TRAVERSAL i.e. ROOT, LEFT, RIGHT -> current
+    let traversals = [...root.val, ...leftValues , ...rightValues];
+    // IN-ORDER TRAVERSAL i.e. LEFT, ROOT, RIGHT
+    // POST-ORDER TRAVERSAL i.e. LEFT, RIGHT, ROOT
+    return traversals;
 };
 
 const depthFirstTraversal  = (root) => {
 
-    if(!root) return []
+    if(root === null) return [];
 
-    let traversals = [];
+    const traversals = [];
 
-    let stack = [root];
+    const stack = [root];
 
     while(stack.length > 0) {
 
+        // PRE-ORDER TRAVERSAL i.e. ROOT, LEFT, RIGHT
         let node = stack.pop();
-
-        if(node.val) traversals.push(node.val);
-
-        if(node.left) stack.push(node.left);
-
-        if(node.right) stack.push(node.right);
-
+        if(node.val) traversals.push(node.val); // root first
+        // IN-ORDER TRAVERSAL i.e. LEFT, ROOT, RIGHT
+        if(node.left) stack.push(node.left); // then left
+        if(node.right) stack.push(node.right); // then right
     }
+    // IN-ORDER TRAVERSAL i.e. LEFT, ROOT, RIGHT
+    // POST-ORDER TRAVERSAL i.e. LEFT, RIGHT, ROOT
 
     return traversals;
 };
@@ -61,6 +61,7 @@ b.right = e;
 c.right = f;
 
 console.log("Traversal:", depthFirstTraversal(a));
+console.log("---------------------------------------------")
 console.log("Traversal Recursive:", depthFirstTraversalRecursive(a));
 //       A
 //      / \

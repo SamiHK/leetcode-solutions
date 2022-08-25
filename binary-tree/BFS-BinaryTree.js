@@ -2,7 +2,7 @@ class Node{
     constructor(val){
         this.val = val;
         this.left = null;
-        this.right =
+        this.right = null;
     }
 }
 
@@ -17,14 +17,17 @@ const breadthFirstTraversal = (root) => {
 
         let node = queue.shift();
 
-        if(node.val) traversals.push(node.val);
+        if(node.val) traversals.push(node.val); // root first
 
-        if(node.left) queue.push(node.left);
+        if(node.left) queue.push(node.left); // left next
 
-        if(node.right) queue.push(node.right);
+        if(node.right) queue.push(node.right); // right next
 
+        // current is PRE-ORDER TRAVERSAL => root, left, right || root, right, left
     }
 
+    // IN-ORDER TRAVERSAL => left, root, right
+    // POST-ORDER TRAVERSAL => left, right, root
     return traversals;
 };
 
