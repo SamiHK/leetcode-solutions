@@ -7,30 +7,46 @@ const shortestPath = (edges, src, dst) => {
 
     let visited = new Set([String(src)]);
 
-    let queue = [ [src, 0] ]; // initially distance is 1
+    let queue = [[src, 0]];
 
-    // Breadth First Search
-
-    while(queue.length > 0){
-
+    while (queue.length) {
+        
         let [current, distance] = queue.shift();
 
-        if(current === dst) return distance;
+        for(let neighbour of graph[current]){
 
-        for(let neighbor of graph[current]){
+            if(!visited.has(String(neighbour))){
+                visited.add(String(neighbour));
 
-            if(!visited.has(String(neighbor))){
-                
-                visited.add(String(neighbor));
-
-                queue.push([neighbor, distance +1]); // neighbour has distance +1
+                queue.push([neighbour, distance+1]);
             }
+
         }
     }
     
     return -1;
 };
 
+// let queue = [ [src, 0] ]; // initially distance is 1
+
+//     // Breadth First Search
+
+//     while(queue.length > 0){
+
+//         let [current, distance] = queue.shift();
+
+//         if(current === dst) return distance;
+
+//         for(let neighbor of graph[current]){
+
+//             if(!visited.has(String(neighbor))){
+                
+//                 visited.add(String(neighbor));
+
+//                 queue.push([neighbor, distance +1]); // neighbour has distance +1
+//             }
+//         }
+//     }
 
 const buildGraph = (edges) => {
 
