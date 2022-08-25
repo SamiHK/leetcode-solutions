@@ -9,9 +9,10 @@ const shortestPath = (edges, src, dst) => {
 
     let queue = [[src, 0]];
 
-    while (queue.length) {
+    while (queue.length > 0) {
         
         let [current, distance] = queue.shift();
+        if(current == dst) return distance;
 
         for(let neighbour of graph[current]){
 
@@ -26,27 +27,6 @@ const shortestPath = (edges, src, dst) => {
     
     return -1;
 };
-
-// let queue = [ [src, 0] ]; // initially distance is 1
-
-//     // Breadth First Search
-
-//     while(queue.length > 0){
-
-//         let [current, distance] = queue.shift();
-
-//         if(current === dst) return distance;
-
-//         for(let neighbor of graph[current]){
-
-//             if(!visited.has(String(neighbor))){
-                
-//                 visited.add(String(neighbor));
-
-//                 queue.push([neighbor, distance +1]); // neighbour has distance +1
-//             }
-//         }
-//     }
 
 const buildGraph = (edges) => {
 

@@ -1,32 +1,20 @@
 
 const depthFirstStackPrint = (graph, source) => {
-    
-    const stack = [source];
-
-    while (stack.length>0) {
-        let curr = stack.pop();
-        console.log(curr);
-
-        for(let neighbour of graph[curr]){
-            stack.push(neighbour);
-        }
-    }
-
     // Stack -> LIFO
     // LI -> .push() entry at end
     // FO -> .pop() exit at end
     // vertical
-    // const stack = [source];
+    const stack = [source];
 
-    // while(stack.length > 0){
+    while(stack.length > 0){
 
-    //     let current = stack.pop();
-    //     console.log(current);
+        let current = stack.pop();
+        console.log(current);
 
-    //     for(let neighbors of graph[current]){
-    //         stack.push(neighbors);
-    //     }
-    // }
+        for(let neighbors of graph[current]){
+            stack.push(neighbors);
+        }
+    }
 };
 
 

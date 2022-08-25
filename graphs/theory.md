@@ -42,8 +42,12 @@ We pick a point/node and travel as far as possible on that direction and then we
 above list can be traversed by DFT if we start as (a): a->b->d->c->e->b->f
 
 It uses a *stack* for better performance.
+
 It uses a *LinkedList* for better performance in recursive implementation, although *arrays* can be useful.
 
+
+
+----------------------------------------
 ### Breadth first traversal.
 We check all neighbours on a certain depth, choice of choosing the first neighbour on a depth level is optional we can choose any.
 
@@ -51,5 +55,7 @@ in BDT, from the starting point we'll explore all the immidiate neighbours, once
 sequence if we start BDT from (a): a->b->c->d->e->b->f
 
 It uses a *queue* for better performance.
+
 It uses a *LinkedList* for better performance, although *arrays* can be useful.
-In Breadthfirst if you recursion to traverse it fight with stack calling mechanism of call stack so maybe we should only use iterative approach.
+
+IMPORTANT: In Breadthfirst if you recursion to traverse it fight with stack calling mechanism of call stack so maybe we should only use iterative approach.
