@@ -2,34 +2,28 @@
 
 const largestComponent = (graph) => {
 
-    const visited = new Set();
+    if(graph === null || graph.length === 0) return -1;
 
-    let longest = 0;
+    const visited = new Set();
+    let largest  = 0;
 
     for(let node in graph){
-
-        let size = exploreSize(graph, node, visited);
-        if(size > longest) {
-            longest = size;
-        }
+        let size = exploreGraph(graph, node, visited);
+        if(size>largest) largest = size;
     }
 
-    return longest;
+    return largest;
 };
 
 
-const exploreSize = (graph, node, visited) =>{
+const exploreGraph = (graph, node, visited) =>{
 
-    if(visited.has(String(node))) return 0; // Important to set Key as String to avoid number key duplicates
-
+    if(visited.has(String(node))) return 0;// Important to set Key as String to avoid number key duplicates
     visited.add(String(node)); // Important to set Key as String to avoid number key duplicates
 
-    // console.log(visited);
-
-    let size = 1;
-
-    for(let neighbor of graph[node]){
-        size += exploreSize(graph, neighbor, visited);
+    let size = 1; // if we explore size starts with 1 for any node
+    for(let neighbour of graph[node]){
+        size += exploreGraph(graph, neighbour, visited);
     }
 
     return size;

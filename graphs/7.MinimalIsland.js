@@ -54,7 +54,7 @@ const grid = [
 ];
 
 
-console.log("Islands:", minimalIslandCount(grid)); // -> 3
+console.log("Islands:", minimalIslandCount(grid)); // -> 2
 console.log("Islands:", minimalIslandCount([['W','W','W','W','W','W']])); // -> 0
 console.log("Islands:", minimalIslandCount([[]])); // -> -1
 
